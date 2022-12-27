@@ -1,4 +1,4 @@
-import { createResult } from "./appResalt.js";
+import { createResult } from "./appResult.js";
 
 const oneAnswer = 'choice_of_one_answer';
 const multiAnswer = 'multiple_choice';
