@@ -31,9 +31,7 @@ export const createSetTest = (tests) => {
         nameTest.append(createItemList(tests[i].title));
         nameTest.addEventListener('click', () => {
             document.body.innerHTML = '';
-            const test = createTest(tests[i]);
-            document.body.append(test);
-            //console.log(i);
+            createTest(tests[i]);
         })
         testsList.append(nameTest);
     }
@@ -41,6 +39,6 @@ export const createSetTest = (tests) => {
     main.append(section);
     section.append(container);
     container.append(description, testsList);
-
+    
     return main;
 }

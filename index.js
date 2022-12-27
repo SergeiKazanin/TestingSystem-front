@@ -13,8 +13,9 @@ const getTests = async () => {
 
 const app = async () => {
     const tests = await getTests();
-    const setQuestins = createSetTest(tests);
-    document.body.append(setQuestins);
+    const setTest = createSetTest(tests);
+    document.body.append(setTest);
+    
     console.log(tests);
 }
 
