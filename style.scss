@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;700&family=Poppins:wght@300;700&display=swap');
 
 $theme-color: #0037ff;
 
@@ -7,11 +7,10 @@ $theme-color: #0037ff;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,8 +24,6 @@ body {
     background-size: cover;
 
 
-    gap: 40px;
-
     &:after {
         content: '';
         position: absolute;
@@ -39,17 +36,89 @@ body {
     }
 }
 
-.testsList__description{
-    font-size: 30px;
+.testsList__container {
+    .testsList__description {
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    li {
+        font-size: 25px;
+        list-style-type: none;
+        cursor: pointer;
+        margin: 10px;
+        transition: all .5s;
+
+        &:hover {
+            scale: 0.95;
+        }
+    }
 }
 
-li {
-    font-size: 25px;
-    list-style-type: none;
-    cursor: pointer;
+.test__container {
+    .test__description {
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
 
-    transition: all .3s;
-    &:hover {
-        scale: 0.9;
+    .test__numberOfQuestions {
+        font-size: 25px;
+        margin-bottom: 100px;
+    }
+
+    .test__question {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+
+    .test__answers {
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start;
+        gap: 20px;
+
+    }
+
+    input {
+        cursor: pointer;
+        width: 19px;
+        height: 19px;
+        margin: 0px 10px 0 0;
+        transition: all .3s;
+
+
+        &:hover {
+            scale: 0.9;
+        }
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    .test_buttonNextAnswer {
+        background-color: $theme-color;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        margin-top: 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
+        transition: all .3s;
+
+        &:hover {
+            background-color: darken($theme-color, 20%);
+        }
+
+        &:active {
+            scale: 0.96;
+
+        }
     }
 }

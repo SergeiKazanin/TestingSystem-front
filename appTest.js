@@ -2,9 +2,8 @@ import { createResult } from "./appResult.js";
 
 const oneAnswer = 'choice_of_one_answer';
 const multiAnswer = 'multiple_choice';
-const resaltAnswer = [];
-let trueAnswerOne = 0;
-let trueAnswerMulti = [];
+const resaltAnswer = [{}];
+
 let questionsNumber = 0;
 
 export const createTest = (test) => {
@@ -37,7 +36,7 @@ export const createTest = (test) => {
 
     description.textContent = `${test.title}`;
     if (questionsNumber === test.questions.length - 1) {
-        buttonNextQuestion.textContent = 'Ответить на последний вопрос и завершить тест';
+        buttonNextQuestion.textContent = 'Ответить на вопрос';
     } else {
         buttonNextQuestion.textContent = 'Следующий вопрос';
     }
@@ -51,13 +50,16 @@ export const createTest = (test) => {
             for (let i = 0; i < test.questions[questionsNumber].answers.length; i++) {
                 const answer = document.createElement('input');
                 const label = document.createElement('label');
+                const ansDiv = document.createElement('div');
+                ansDiv.classList.add('test_ansDiv');
                 answer.setAttribute('type', 'radio');
                 answer.setAttribute('name', 'answer');
                 answer.setAttribute('value', `${i}`);
                 answer.setAttribute('id', `anwerChoice${i}`);
                 label.setAttribute('for', `anwerChoice${i}`);
                 label.textContent = test.questions[questionsNumber].answers[i].description;
-                answers.append(answer, label);
+                ansDiv.append(answer, label);
+                answers.append(ansDiv);
             }
         }
         if (test.questions[questionsNumber].question_type === multiAnswer) {
@@ -65,13 +67,16 @@ export const createTest = (test) => {
             for (let i = 0; i < test.questions[questionsNumber].answers.length; i++) {
                 const answer = document.createElement('input');
                 const label = document.createElement('label');
+                const ansDiv = document.createElement('div');
+                ansDiv.classList.add('test_ansDiv');
                 answer.setAttribute('type', 'checkbox');
                 answer.setAttribute('name', 'answer');
                 answer.setAttribute('value', `${i}`);
                 answer.setAttribute('id', `anwerChoice${i}`);
                 label.setAttribute('for', `anwerChoice${i}`);
                 label.textContent = test.questions[questionsNumber].answers[i].description;
-                answers.append(answer, label);
+                ansDiv.append(answer, label);
+                answers.append(ansDiv);
             }
         }
 
@@ -81,59 +86,53 @@ export const createTest = (test) => {
         let checkChecked;
         if (test.questions[questionsNumber].question_type === oneAnswer) {
             let rad = document.getElementsByName('answer');
-            for (let i = 0; i < test.questions[questionsNumber].answers.length; i++) {
-                if (test.questions[questionsNumber].answers[i].is_right === true) {
-                    trueAnswerOne = i;
-                }
-            }
+
             checkChecked = 0;
             for (let i = 0; i < rad.length; i++) {
                 if (rad[i].checked) {
                     checkChecked++;
-                    if (trueAnswerOne === i) {
-                        resaltAnswer.push(1);
-                    } else {
-                        resaltAnswer.push(0);
-                    }
                 }
             }
             if (checkChecked === 0) return;
+            let answers = [];
+            for (let i = 0; i < rad.length; i++) {
+                if (rad[i].checked === true) {
+                    answers.push(true)
+                } else {
+                    answers.push(false)
+                }
+            }
+            resaltAnswer[questionsNumber].answers = answers;
         }
 
         if (test.questions[questionsNumber].question_type === multiAnswer) {
             let rad = document.getElementsByName('answer');
-            trueAnswerMulti.splice(0);
-            for (let i = 0; i < test.questions[questionsNumber].answers.length; i++) {
-                if (test.questions[questionsNumber].answers[i].is_right === true) {
-                    trueAnswerMulti.push(i);
-                }
-            }
-            let namberInc = 0;
 
             checkChecked = 0;
             for (let i = 0; i < rad.length; i++) {
                 if (rad[i].checked) {
                     checkChecked++;
-                    if (trueAnswerMulti.includes(i)) {
-                        namberInc++;
-                    }
                 }
             }
             if (checkChecked === 0) return;
-
-            if (namberInc === trueAnswerMulti.length) {
-                resaltAnswer.push(1);
-            } else {
-                resaltAnswer.push(0);
+            let answers = [];
+            for (let i = 0; i < rad.length; i++) {
+                if (rad[i].checked === true) {
+                    answers.push(true)
+                } else {
+                    answers.push(false)
+                }
             }
+            resaltAnswer[questionsNumber].answers = answers;
         }
         document.body.innerHTML = '';
 
         if (test.questions.length - 1 === questionsNumber) {
             console.log(resaltAnswer);
-            createResult(resaltAnswer);
+            createResult(resaltAnswer, test);
             return;
         }
+        resaltAnswer.push({});
         questionsNumber++;
         createTest(test);
     })

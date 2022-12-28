@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;700&family=Poppins:wght@300;700&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,6 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  gap: 40px;
 }
 body:after {
   content: "";
@@ -28,16 +27,71 @@ body * {
   z-index: 1;
 }
 
-.testsList__description {
+.testsList__container .testsList__description {
   font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
-
-li {
+.testsList__container li {
   font-size: 25px;
   list-style-type: none;
   cursor: pointer;
+  margin: 10px;
+  transition: all 0.5s;
+}
+.testsList__container li:hover {
+  scale: 0.95;
+}
+
+.test__container .test__description {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.test__container .test__numberOfQuestions {
+  font-size: 25px;
+  margin-bottom: 100px;
+}
+.test__container .test__question {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+.test__container .test__answers {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 20px;
+}
+.test__container input {
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+  margin: 0px 10px 0 0;
   transition: all 0.3s;
 }
-li:hover {
+.test__container input:hover {
   scale: 0.9;
+}
+.test__container label {
+  cursor: pointer;
+}
+.test__container .test_buttonNextAnswer {
+  background-color: #0037ff;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  margin-top: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+.test__container .test_buttonNextAnswer:hover {
+  background-color: #002199;
+}
+.test__container .test_buttonNextAnswer:active {
+  scale: 0.96;
 }/*# sourceMappingURL=style.css.map */
