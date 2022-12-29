@@ -27,12 +27,7 @@ export const createTest = (test) => {
     radioButtons.classList.add('test__radioButtons');
 
 
-    const createItemP = (text) => {
-        const p = document.createElement('p');
-        p.textContent = text;
 
-        return p;
-    }
 
     description.textContent = `${test.title}`;
     if (questionsNumber === test.questions.length - 1) {
@@ -128,7 +123,6 @@ export const createTest = (test) => {
         document.body.innerHTML = '';
 
         if (test.questions.length - 1 === questionsNumber) {
-            console.log(resaltAnswer);
             createResult(resaltAnswer, test);
             return;
         }
