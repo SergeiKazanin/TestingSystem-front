@@ -1,4 +1,5 @@
-import { createTest } from "./appTest.js";
+import { Test } from "./appTest.js";
+import { repstate, state } from "./State.js";
 
 export const createSetTest = (tests) => {
 
@@ -25,20 +26,24 @@ export const createSetTest = (tests) => {
 
     description.textContent = 'Выберите тест';
 
+    let test;
     for (let i = 0; i < tests.length; i++) {
         const nameTest = document.createElement('li');
         nameTest.classList.add(`testList__nemeTest`);
         nameTest.append(createItemList(tests[i].title));
         nameTest.addEventListener('click', () => {
             document.body.innerHTML = '';
-            createTest(tests[i]);
+            test = new Test(tests[i]);
+            test.createTest();
+            repstate(0, 0, 'Вопрос1');
         })
         testsList.append(nameTest);
     }
+    repstate(0, 0, `login`);
 
     main.append(section);
     section.append(container);
     container.append(description, testsList);
-    
+
     return main;
 }

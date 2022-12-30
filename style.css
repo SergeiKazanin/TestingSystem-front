@@ -11,10 +11,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: url("fon.png");
+  background-color: #D1D1D1;
+  /*
+  background: url('fon.png');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  */
 }
 
 .testsList__container .testsList__description {
@@ -83,6 +86,25 @@ body {
   background-color: #002199;
 }
 .test__container .test_buttonNextAnswer:active {
+  scale: 0.96;
+}
+.test__container .test__buttonBackQuestion {
+  background-color: #0037ff;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+.test__container .test__buttonBackQuestion:hover {
+  background-color: #002199;
+}
+.test__container .test__buttonBackQuestion:active {
   scale: 0.96;
 }
 
