@@ -50,12 +50,17 @@ body {
     .test__description {
         font-size: 30px;
         margin-top: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     .test__numberOfQuestions {
         font-size: 25px;
-        margin-bottom: 100px;
+        margin-bottom: 20px;
+    }
+
+    .test__time{
+        font-size: 25px;
+        margin-bottom: 80px;
     }
 
     .test__question {
