@@ -221,7 +221,7 @@ export class Test {
             }
         }
 
-        result.textContent = `Правильных ответов ${parseFloat(resOut) / parseFloat(this.resaltAnswer.length) * 100} %`;
+        result.textContent = `Правильных ответов ${Math.floor(parseFloat(resOut) / parseFloat(this.resaltAnswer.length) * 100)} %`;
         document.body.innerHTML = '';
         main.append(section);
         section.append(container);
