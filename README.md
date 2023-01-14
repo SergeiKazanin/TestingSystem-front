@@ -2,4 +2,4 @@
 
 Run on the web server.
 
-https://sergeikazanin.github.io/TestingSystem-front/login.html
+https://sergeikazanin.github.io/TestingSystem-front
